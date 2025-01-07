@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import datetime
 from enum import Enum
+from typing import Union
 
 class StatusEnum(str, Enum):
     Pending = "Pending"
@@ -10,7 +11,7 @@ class NotificationBase(BaseModel):
     patient_name: str
     message: str
     notification_time: datetime
-    status: StatusEnum | None = StatusEnum.Pending
+    status: Union[StatusEnum, None] = StatusEnum.Pending
 
 class NotificationCreate(NotificationBase):
     pass
